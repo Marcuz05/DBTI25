@@ -1,0 +1,44 @@
+[
+    {
+        "INVNR"  : "2",
+        "AUTOR"  : "Joanne K. Rowling",
+        "TITEL"  : "Harry Potter und der Stein der Weisen",
+        "VERLAG" : "Carlsen Verlag"
+    },
+    {
+        "INVNR"  : "3",
+        "AUTOR"  : "Joanne K. Rowling",
+        "TITEL"  : "Harry Potter und die Kammer des Schreckens",
+        "VERLAG" : "Carlsen Verlag"
+    },
+    {
+        "INVNR"  : "4",
+        "AUTOR"  : "Joanne K. Rowling",
+        "TITEL"  : "Harry Potter und der Gefangene von Askaban",
+        "VERLAG" : "Carlsen Verlag"
+    },
+    {
+        "INVNR"  : "5",
+        "AUTOR"  : "Joanne K. Rowling",
+        "TITEL"  : "Harry Potter und der Feuerkelch",
+        "VERLAG" : "Carlsen Verlag"
+    },
+    {
+        "INVNR"  : "6",
+        "AUTOR"  : "Joanne K. Rowling",
+        "TITEL"  : "Harry Potter und der Orden des Phönix",
+        "VERLAG" : "Carlsen Verlag"
+    },
+    {
+        "INVNR"  : "7",
+        "AUTOR"  : "Joanne K. Rowling",
+        "TITEL"  : "Harry Potter und der Halbblutprinz",
+        "VERLAG" : "Carlsen Verlag"
+    },
+    {
+        "INVNR"  : "8",
+        "AUTOR"  : "Joanne K. Rowling",
+        "TITEL"  : "Harry Potter und die Heiligtümer des Todes",
+        "VERLAG" : "Carlsen Verlag"
+    }
+]
