@@ -361,5 +361,73 @@ $ db.entliehen.aggregate([
 Lassen Sie bitte Friedrich Funke das Känguru-Buch ausleihen und wieder zuruckgeben.
 
 ``` shell
-$ db.
+# Buch ausleihen
+$ db.entliehen.insertOne({
+    "LNR": db.leser.findOne({ "NAME": "Friedrich Funke" }).LNR,
+    "INVNR": db.buch.findOne({ "TITEL": /Känguru Chroniken/ }).INVNR,
+    "RUECKGABEDATUM": "2025-10-31"
+})
+
+# Buch zurückgeben
+$ db.entliehen.deleteOne({
+    "LNR": db.leser.findOne({ "NAME": "Friedrich Funke" }).LNR,
+    "INVNR": db.buch.findOne({ "TITEL": /Känguru Chroniken/ }).INVNR
+})
+```
+
+### f)
+
+``` shell
+$ db.buch.insertOne({
+    "INVNR"  : "9",
+    "AUTOR"  : "Horst Evers",
+    "TITEL"  : "Der König von Berlin",
+    "VERLAG" : "Rowohlt-Verlag"
+})
+
+$ db.leser.insertOne({
+    "LNR"       : "12",
+    "NAME"      : "Heinz Müller",
+    "ADRESSE"   : "Klopstockweg 17, 38124 Braunschweig",
+    "ENTLIEHEN" : [
+        {
+            "INVNR"          : "1",
+            "RUECKGABEDATUM" : "2025-10-31"
+        },
+        {
+            "INVNR"          : "9",
+            "RUECKGABEDATUM" : "2025-10-31"
+        }
+    ]
+})
+```
+
+| Vorteile                                                                  | Nachteile                                                           |
+|---------------------------------------------------------------------------|---------------------------------------------------------------------|
+| Es ist möglich, die ausgeliehenen Bücher direkt über den Leser einzusehen | Es ist schwerer herauszufinden, ob ein Buch bereits ausgeliehen ist |
+| Es ist keine extra Tabelle notwendig                                      | Bücher müssen umständlicher aus der Liste entfernt werden           |
+| Semantisch sinnig, die Bücher beim Leser zu haben                         |                                                                     |
+[🌐 Tabelle generiert über TablesGenerator.com](https://www.tablesgenerator.com/markdown_tables)
+
+
+### g)
+
+#### g)
+
+Fügen Sie ein Buch zur `ENTLIEHEN`-Liste des Lesers hinzu:
+
+```shell
+$ db.leser.updateOne(
+    { "LNR": "12" },
+    { $push: { "ENTLIEHEN": { "INVNR": "1", "RUECKGABEDATUM": "2025-11-10" } } }
+)
+```
+
+Entfernen Sie das Buch aus der `ENTLIEHEN`-Liste des Lesers:
+
+```shell
+$ db.leser.updateOne(
+    { "LNR": "12" },
+    { $pull: { "ENTLIEHEN": { "INVNR": "1" } } }
+)
 ```
