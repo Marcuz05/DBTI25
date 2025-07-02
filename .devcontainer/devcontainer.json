@@ -1,7 +1,7 @@
 {
     "name": "Datenbanktheorie- und Implementierung",
     "build": {
-        "dockerfile": ".devcontainer/Dockerfile",
+        "dockerfile": "Dockerfile",
         "context": ".."
     },
     "forwardPorts": [3306],

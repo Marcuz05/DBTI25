@@ -25,7 +25,7 @@ RUN service mariadb start && \
     mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"
 
 # MariaDB beim Containerstart automatisch starten
-COPY startup.sh /usr/local/bin/startup.sh
+COPY .devcontainer/startup.sh /usr/local/bin/startup.sh
 
 EXPOSE 3306
 # ENTRYPOINT ["mariadbd-safe"]
@@ -39,7 +39,7 @@ RUN curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \
     >/etc/apt/sources.list.d/mongodb-org-7.0.list && \
     apt-get update && apt-get install -y mongodb-org
 
-COPY mongod /etc/init.d/mongod 
+COPY .devcontainer/mongod /etc/init.d/mongod 
 RUN chmod 755 /etc/init.d/mongod
 
 EXPOSE 27017
