@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
 
 # SQL-Datei kopieren
 COPY firma.sql /tmp/firma.sql
+COPY ../DataWareHouse/gehaltszahlungen.sql /tmp/gehaltszahlungen.sql
+COPY ../DataWareHouse/sternschema_gehalt.sql /tmp/sternschema_gehalt.sql
 
 # MariaDB initialisieren & SQL-Skript einspielen
 RUN service mariadb start && \
