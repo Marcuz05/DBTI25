@@ -1,7 +1,8 @@
 {
     "name": "Datenbanktheorie- und Implementierung",
     "build": {
-        "dockerfile": "Dockerfile"
+        "dockerfile": ".devcontainer/Dockerfile",
+        "context": ".."
     },
     "forwardPorts": [3306],
     "postCreateCommand": "bash /usr/local/bin/startup.sh",

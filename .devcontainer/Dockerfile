@@ -12,14 +12,16 @@ RUN apt-get update && apt-get install -y \
 #    sed -i 's/^bind-address.*/bind-address = 0.0.0.0/' /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # SQL-Datei kopieren
-COPY firma.sql /tmp/firma.sql
-COPY ../DataWareHouse/gehaltszahlungen.sql /tmp/gehaltszahlungen.sql
-COPY ../DataWareHouse/sternschema_gehalt.sql /tmp/sternschema_gehalt.sql
+COPY .devcontainer/firma.sql /tmp/firma.sql
+COPY DataWareHouse/gehaltszahlungen.sql /tmp/gehaltszahlungen.sql
+COPY DataWareHouse/sternschema_gehalt.sql /tmp/sternschema_gehalt.sql
 
 # MariaDB initialisieren & SQL-Skript einspielen
 RUN service mariadb start && \
     sleep 5 && \
     mysql -u root < /tmp/firma.sql && \
+    mysql -u root firma < /tmp/gehaltszahlungen.sql && \
+    # mysql -u root firma < /tmp/sternschema_gehalt.sql && \
     mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"
 
 # MariaDB beim Containerstart automatisch starten
